@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!--
+  USO DE IA GENERATIVA
+  IA utilizada: Claude
+  Prompt 1: "Actúa como un profesor de desarrollo web y explícame de forma sencilla qué son HTML, CSS, Bootstrap y el diseño responsive, y qué diferencia hay entre diseñar el mockup en Figma y programar la página en VS Code."
+  Prompt 2: "Propón una estructura para usuarios.html con Bootstrap 5 (formulario de alta y tabla de usuarios) y explícame cada parte para poder entenderla y adaptarla a mi página."
+  Prompt 3: "Explícame qué hace cada parte de usuarios.html: cómo se reparten el formulario y la tabla en columnas responsive, para qué sirven los id de los campos y por qué no debe haber JavaScript dentro del HTML."
+  Prompt 4: "Analiza el mockup de Figma que ha hecho mi compañero, dime si cumple lo que piden el enunciado y la rúbrica y qué debo tener en cuenta para que mi página de usuarios sea coherente con él."
+-->
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usuarios - UOCTandem</title>
+
+  <!-- Bootstrap 5 (CSS) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Estilos propios del proyecto (los hace la Persona 1) -->
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body class="animacion-aparicion">
+
+  <!-- ===== NAVBAR COMÚN (Persona 1) ===== -->
+  <nav class="navbar navbar-expand-lg mb-5">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <span class="logo-box">uoc</span>
+        <span class="fw-bold fs-5 text-dark">UOCTandem</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-4 me-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="intercambios.html">Intercambios</a></li>
+          <li class="nav-item"><a class="nav-link active" href="usuarios.html">Usuarios</a></li>
+        </ul>
+
+        <span class="navbar-text fw-semibold" id="usuarioNav">
+          no login
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container pb-5">
+
+    <!-- ===== CABECERA ===== -->
+    <div class="text-center mb-5">
+      <p class="text-primary fw-bold mb-2 small text-uppercase">Administración</p>
+      <h1 class="fw-bold display-5 mb-3">Gestión de Usuarios</h1>
+      <p class="text-muted">Da de alta nuevos usuarios y gestiona los que ya están registrados.</p>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- ===== 01 · FORMULARIO DE ALTA ===== -->
+      <section class="col-lg-5">
+        <div class="card shadow-sm h-100">
+          <div class="card-header bg-white py-3">
+            <h2 class="h5 mb-1"><span class="badge rounded-pill text-bg-light text-primary me-2">01</span>Alta de
+              Usuario</h2>
+            <p class="small text-muted mb-0">Registra un nuevo usuario en la plataforma.</p>
+          </div>
+          <div class="card-body">
+            <form id="formUsuario" novalidate>
+
+              <div class="mb-3">
+                <label for="nombre" class="form-label fw-semibold">Nombre</label>
+                <input type="text" id="nombre" class="form-control" placeholder="Ej.: Ana López">
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label fw-semibold">Email</label>
+                <input type="email" id="email" class="form-control" placeholder="Ej.: ana.lopez@uoc.edu">
+              </div>
+
+              <div class="mb-3">
+                <label for="password" class="form-label fw-semibold">Contraseña</label>
+                <input type="password" id="password" class="form-control">
+              </div>
+
+              <div class="mb-3">
+                <label for="idiomaNativo" class="form-label fw-semibold">Idioma nativo</label>
+                <select id="idiomaNativo" class="form-select">
+                  <option value="">Elige idioma</option>
+                  <option>Español</option>
+                  <option>Catalán</option>
+                  <option>Inglés</option>
+                  <option>Francés</option>
+                  <option>Alemán</option>
+                  <option>Italiano</option>
+                  <option>Portugués</option>
+                  <option>Chino</option>
+                  <option>Japonés</option>
+                  <option>Árabe</option>
+                </select>
+              </div>
+
+              <!-- Hueco para mensajes de error o de registro -->
+              <div id="mensaje" role="alert" aria-live="polite"></div>
+
+              <button type="submit" class="btn btn-primary w-100 fw-semibold">Registrar</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 02 · TABLA DE USUARIOS ===== -->
+      <section class="col-lg-7">
+        <div class="card shadow-sm h-100">
+          <div class="card-header bg-white py-3">
+            <h2 class="h5 mb-1"><span class="badge rounded-pill text-bg-light text-primary me-2">02</span>Consulta y
+              Borrado de Usuarios</h2>
+            <p class="small text-muted mb-0" id="contadorUsuarios">0 usuarios registrados</p>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-light small text-uppercase">
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Idioma nativo</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <!-- Las filas las genera pintarTabla() en usuarios.js -->
+              <tbody id="tablaUsuarios"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Bootstrap 5 (JS, para que funcione el menú de la navbar en móvil) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Lógica de la página. type="module" para poder usar import -->
+  <script type="module" src="js/usuarios.js"></script>
+</body>
+
+</html>

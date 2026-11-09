@@ -1,0 +1,87 @@
+<!-- 
+  USO DE IA GENERATIVA
+  IA utilizada: Gemini
+  Prompt 1: "Constrúyeme el documento HTML para la página de login, conectando Bootstrap y copiando la barra de navegación que usamos en el resto de la web."
+  Prompt 2: "Diséñame un contenedor en el medio de la pantalla usando Bootstrap para que la tarjeta de inicio de sesión quede bien centrada y no ocupe todo el ancho."
+  Prompt 3: "Estructúrame el formulario con una casilla obligatoria para el correo, otra para la contraseña y un botón principal que ocupe todo el ancho para entrar."
+  Prompt 4: "Prepárame un hueco vacío debajo del formulario para mostrar los avisos al usuario y enlaza el archivo JavaScript al final de la página."
+-->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Tándem Idiomas</title>
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+  <!--Barra de navegación-->
+  <nav class="navbar navbar-expand-lg mb-5">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <span class="logo-box">uoc</span>
+        <span class="fw-bold fs-5 text-dark">UOCTandem</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-4 me-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link active" href="login.html">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="intercambios.html">Intercambios</a></li>
+          <li class="nav-item"><a class="nav-link" href="usuarios.html">Usuarios</a></li>
+        </ul>
+
+        <span class="navbar-text fw-semibold" id="usuarioNav">
+          no login
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!--Contenido principal: Formulario de Login -->
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5">
+        <div class="card shadow">
+          <div class="card-header bg-primary text-white text-center">
+            <h3>Iniciar Sesión</h3>
+          </div>
+          <div class="card-body">
+            <form id="formLogin">
+              <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="email" placeholder="ejemplo@mail.com" required>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" placeholder="Tu contraseña" required>
+              </div>
+              <button type="submit" class="btn btn-primary w-100">Entrar</button>
+            </form>
+            <div id="mensajeLogin" class="mt-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Tu script tipo módulo -->
+  <script type="module" src="js/login.js"></script>
+</body>
+
+</html>

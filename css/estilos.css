@@ -1,0 +1,77 @@
+/* Importación de Webfont obligatoria */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+    /* Fondo claro del mockup */
+    color: #333;
+}
+
+/* Colores exigidos y adaptados al Mockup */
+.oferta {
+    background-color: #0d6efd !important;
+    /* Azul Bootstrap para ofertas */
+    color: white;
+}
+
+.peticion {
+    background-color: #198754 !important;
+    /* Verde Bootstrap para peticiones */
+    color: white;
+}
+
+/* Estilos de la Navbar según el diseño de Figma */
+.navbar {
+    background-color: #ffffff;
+    border-bottom: 1px solid #eaeaea;
+    padding: 0;
+}
+
+.navbar-brand .logo-box {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-right: 8px;
+}
+
+.nav-link {
+    color: #666;
+    font-weight: 500;
+    padding: 20px 15px !important;
+}
+
+.nav-link.active {
+    color: #0d6efd !important;
+    border-bottom: 2px solid #0d6efd;
+    /* Subrayado azul de página activa */
+}
+
+/* Animaciones obligatorias (Persona 1) */
+.animacion-aparicion {
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tarjeta-hover {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
