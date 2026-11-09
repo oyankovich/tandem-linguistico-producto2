@@ -1,0 +1,12 @@
+import { obtenerUsuarioActivo, obtenerIntercambios, obtenerSeleccionados, guardarSeleccionado, borrarSeleccionado } from './almacenaje.js';
+
+document.addEventListener("DOMContentLoaded", async () => {
+    // 1. Mostrar usuario activo en la Navbar
+    const usuarioNav = document.getElementById("usuarioNav");
+    const usuario = await obtenerUsuarioActivo();
+    if (usuarioNav) {
+        usuarioNav.textContent = usuario ? `${usuario.email}` : "no login";
+    }
+
+    // Aquí la Persona 5 programará la carga de tarjetas y el Drag & Drop
+});
