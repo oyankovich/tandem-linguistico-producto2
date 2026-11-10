@@ -1,9 +1,10 @@
 /* USO DE IA GENERATIVA
  * IA utilizada: Claude (Anthropic)
- * Prompt 1: 
- * Prompt 2: 
- * Prompt 3:
- * Prompt 4: 
+ * Prompt 1: "A partir del enunciado del Producto 2 y del reparto de tareas del grupo, indícame toda la información que necesitas para desarrollar la parte de la Persona 5: el dashboard con la API Drag & Drop de HTML5 y la persistencia de las tarjetas seleccionadas en IndexedDB."
+ * Prompt 2: "Revisa el repositorio del Producto 2 (almacenaje.js, int_1_dashboard.js e index.html) y desarrolla int_1_dashboard.js: tarjetas con data-id, zona de selección, eventos dragstart, dragover y drop, y guardado y recuperación de la selección mediante las funciones de almacenaje.js."
+ * Prompt 3: "Comprueba si los últimos cambios subidos a la rama de la Persona 4 y el merge a main afectan a mi parte, e indícame paso a paso cómo crear mi rama, integrar los archivos y abrir el Pull Request en GitHub."
+ * Prompt 4: "La zona para devolver las tarjetas es demasiado pequeña y no se ve hasta pasar el cursor por encima: mejora su tamaño y su visibilidad mientras se arrastra una tarjeta desde la selección."
+ * Prompt 5: "Comprueba que el proyecto cumple los criterios de la rúbrica del Producto 2 e indica qué falta en cada componente."
  */
 
 // int_1_dashboard.js
