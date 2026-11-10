@@ -9,4 +9,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // Aquí la Persona 2 programará la captura del formulario de login y alertas
+
+  const form = document.getElementById("formLogin");
+  const email = document.getElementById("email");
+  const password = document.getElementById("password");
+
+  const submitBtn = document.getElementById("submitBtn");
+  const mssgLogIn = document.getElementById("mssgLogIn");
+
 });
