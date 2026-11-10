@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const mssgLogIn = document.getElementById("mensajeLogin");
 
   function mostrarMensaje(texto, tipo) {
-    mssgLogIn.innerHTML = `<div class="alert alert-${tipo} mb-0 role="alert"> ${texto}</div>`;
+    mssgLogIn.innerHTML = `<div class="alert alert-${tipo} mb-0" role="alert"> ${texto}</div>`;
   }
 
   if (usuario) {
