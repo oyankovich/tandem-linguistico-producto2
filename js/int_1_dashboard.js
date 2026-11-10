@@ -2,7 +2,8 @@
  * IA utilizada: Claude (Anthropic)
  * Prompt 1: 
  * Prompt 2: 
- * Prompt 3: 
+ * Prompt 3:
+ * Prompt 4: 
  */
 
 // int_1_dashboard.js
@@ -144,12 +145,20 @@ function alEmpezarArrastre(evento) {
     evento.dataTransfer.setData('text/plain', tarjeta.dataset.id);
     evento.dataTransfer.effectAllowed = 'move';
     tarjeta.classList.add('arrastrando');
+    // Apuntamos de qué zona sale la tarjeta para que el CSS marque la zona contraria
+    document.body.dataset.arrastre = evento.currentTarget.dataset.zona;
 }
 
 // 2. Al soltar o cancelar: quitamos el aspecto de "arrastrando"
 function alTerminarArrastre(evento) {
     const tarjeta = evento.target.closest('[data-id]');
     if (tarjeta) tarjeta.classList.remove('arrastrando');
+    terminarArrastre();
+}
+
+// Quita todas las marcas visuales del arrastre
+function terminarArrastre() {
+    delete document.body.dataset.arrastre;
     document.querySelectorAll('.zona-activa').forEach(z => z.classList.remove('zona-activa'));
 }
 
@@ -171,7 +180,8 @@ function alSalirDeZona(evento) {
 async function alSoltar(evento) {
     evento.preventDefault();
     const zona = evento.currentTarget;
-    zona.classList.remove('zona-activa');
+    // Al repintar, la tarjeta original desaparece y su "dragend" no llega: limpiamos aquí
+    terminarArrastre();
 
     // IndexedDB guarda el id como número; desde el HTML llega como texto
     const id = Number(evento.dataTransfer.getData('text/plain'));
