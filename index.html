@@ -18,6 +18,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="css/estilos.css" rel="stylesheet">
+    <!-- Estilos propios del Drag & Drop del dashboard (Persona 5) -->
+    <link href="css/dashboard.css" rel="stylesheet">
 </head>
 
 <body class="animacion-aparicion">
@@ -62,13 +64,32 @@
             <p class="text-muted">Conecta con otras personas, comparte el idioma que dominas y practica el que quieres
                 aprender.</p>
 
-            <div class="btn-group mt-3" role="group">
-                <button type="button" class="btn btn-primary px-4">Otras</button>
-                <button type="button" class="btn btn-outline-secondary bg-white text-dark px-4">Propias</button>
+            <div class="btn-group mt-3" role="group" aria-label="Filtrar intercambios">
+                <button type="button" class="btn btn-primary px-4" id="btnOtras">Otras</button>
+                <button type="button" class="btn btn-outline-secondary bg-white text-dark px-4" id="btnPropias">Propias</button>
             </div>
         </div>
 
-        <div class="row" id="contenedorTarjetas">
+        <!-- Avisos flotantes en la esquina (los rellena int_1_dashboard.js). Flotan para no mover las tarjetas mientras se arrastran -->
+        <div id="mensajeDashboard" class="aviso-flotante" role="status" aria-live="polite"></div>
+
+        <div class="row g-4 pb-5">
+
+            <!-- ===== 01 · TARJETAS DISPONIBLES (zona de arrastre y también de soltado para deseleccionar) ===== -->
+            <section class="col-lg-8">
+                <h2 class="h5 fw-bold mb-1">Intercambios disponibles</h2>
+                <p class="small text-muted mb-3">Arrastra una tarjeta a "Mi selección" para guardarla.</p>
+                <div class="row g-3 zona-soltar" id="contenedorTarjetas" data-zona="disponibles"></div>
+            </section>
+
+            <!-- ===== 02 · ZONA DE SELECCIÓN (Persona 5) ===== -->
+            <section class="col-lg-4">
+                <div class="seleccion-panel">
+                    <h2 class="h5 fw-bold mb-1">Mi selección <span class="badge text-bg-dark ms-1" id="contadorSeleccion">0</span></h2>
+                    <p class="small text-muted mb-3">Se guarda en el navegador (IndexedDB). Arrastra una tarjeta fuera para quitarla.</p>
+                    <div class="zona-soltar zona-seleccion" id="contenedorSeleccion" data-zona="seleccion"></div>
+                </div>
+            </section>
 
         </div>
 
