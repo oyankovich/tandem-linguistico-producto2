@@ -1,0 +1,128 @@
+/* Estilos del Drag & Drop del dashboard (Persona 5).
+   Van en un archivo propio para no tocar estilos.css, que es común a todo el grupo. */
+
+/* Panel de "Mi selección": se queda fijo al hacer scroll en pantallas grandes */
+.seleccion-panel {
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+@media (min-width: 992px) {
+    .seleccion-panel {
+        position: sticky;
+        top: 20px;
+    }
+}
+
+/* Zona de tarjetas disponibles: altura mínima para que siempre haya sitio donde soltar */
+#contenedorTarjetas {
+    margin-top: 0; /* Bootstrap sube la rejilla .g-3 16px; así no tapa el texto de encima */
+    min-height: 320px;
+    align-content: flex-start;
+    border-radius: 10px;
+    transition: background-color 0.2s ease;
+}
+
+/* Mientras se arrastra una tarjeta desde "Mi selección", se marca la zona de la izquierda */
+body[data-arrastre="seleccion"] #contenedorTarjetas {
+    outline: 2px dashed #6c757d;
+    outline-offset: 4px;
+    background-color: rgba(108, 117, 125, 0.08);
+}
+
+body[data-arrastre="seleccion"] #contenedorTarjetas::before {
+    content: "Suelta aquí para quitarla de tu selección";
+    flex: 0 0 100%;
+    text-align: center;
+    font-weight: 600;
+    color: #495057;
+    padding: 12px 0 4px;
+}
+
+/* Mientras se arrastra una tarjeta disponible, se marca la zona de selección */
+body[data-arrastre="disponibles"] .zona-seleccion {
+    border-color: #0d6efd;
+    background-color: rgba(13, 110, 253, 0.04);
+}
+
+/* Evita seleccionar texto sin querer al arrastrar */
+[draggable="true"],
+.seleccion-panel {
+    user-select: none;
+}
+
+/* Zona donde se sueltan las tarjetas seleccionadas */
+.zona-seleccion {
+    min-height: 220px;
+    border: 2px dashed #ced4da;
+    border-radius: 10px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Texto de ayuda cuando una zona está vacía */
+.zona-vacia {
+    color: #6c757d;
+    font-size: 0.9rem;
+    text-align: center;
+    margin: auto;
+    padding: 24px 8px;
+}
+
+/* Las tarjetas se pueden coger: cursor de "mano" */
+[draggable="true"] {
+    cursor: grab;
+}
+
+/* Tarjeta mientras se está arrastrando */
+.arrastrando {
+    opacity: 0.4;
+}
+
+/* Zona resaltada cuando pasa una tarjeta por encima */
+.zona-activa {
+    outline: 2px dashed #0d6efd;
+    outline-offset: 4px;
+    border-radius: 10px;
+    background-color: rgba(13, 110, 253, 0.06);
+}
+
+.zona-seleccion.zona-activa {
+    border-color: #0d6efd;
+    outline: none;
+}
+
+/* Avisos en la esquina inferior derecha: no empujan el contenido */
+.aviso-flotante {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1050;
+    max-width: 340px;
+}
+
+.aviso-flotante .alert {
+    margin: 0;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* Animación al soltar una tarjeta en su nueva zona */
+.recien-soltada {
+    animation: aparecer 0.35s ease-out;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
