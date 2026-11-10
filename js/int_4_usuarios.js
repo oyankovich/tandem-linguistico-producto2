@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         if (usuarioNav) {
             usuarioNav.textContent = usuario
-                ? `👤 ${usuario.nombre || usuario.email}`
+                ? `${usuario.nombre || usuario.email}`
                 : "no login";
         }
     }

@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const usuarioNav = document.getElementById("usuarioNav");
   const usuario = await obtenerUsuarioActivo();
   if (usuarioNav) {
-    usuarioNav.textContent = usuario ? `👤 ${usuario.email}` : "no login";
+    usuarioNav.textContent = usuario ? `${usuario.nombre || usuario.email}` : "no login";
   }
 
   // Aquí la Persona 2 programará la captura del formulario de login y alertas
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     mssgLogIn.innerHTML = `<div class="alert alert-${tipo} mb-0 role="alert"> ${texto}</div>`;
   }
 
-  if (usuario){
+  if (usuario) {
     mostrarMensaje(`Ya has iniciado sessión con ${usuario.email}.`, "info");
   }
 
@@ -45,11 +45,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     submitBtn.disabled = true;
 
-    try{
+    try {
       const userLogged = await loguearUsuario(valueMail, valuePsswd);
       usuarioNav.textContent = `${userLogged.email}`;
       mostrarMensaje("¡Bienvenido/a! Redirigiendo al dashboard...", "success");
-      setTimeout( () => {
+      setTimeout(() => {
         window.location.href = "index.html";
       }, 1200);
     } catch (error) {
